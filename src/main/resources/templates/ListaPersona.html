@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="/plantilla/plantillaPrincipal">
+<head>
+<meta charset="utf-8">
+<title>Listar Personas</title>
+</head>
+<body>
+	<div layout:fragment="contenidoPaginas">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Personas</h1>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="./">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Personas</li>
+			</ol>
+		</div>
+		<div class="text-center">
+			<table class="table table-dark">
+				<thead>
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Cedula</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Apellido</th>
+						<th scope="col">Telefono</th>
+						<th scope="col">Email</th>
+						<th scope="col">Direccion</th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="persona:${listaPersonas}">
+						<th th:text="${persona.idPersona}" scope="row"></th>
+						<td th:text="${persona.cedula}"></td>
+						<td th:text="${persona.nombrePersona}"></td>
+						<td th:text="${persona.apellidoPersona}"></td>
+						<td th:text="${persona.telefonoPersona}"></td>
+						<td th:text="${persona.emailPersona}"></td>
+						<td th:text="${persona.direccionPersona}"></td>
+						<td><a th:href="@{/editarpersona/} + ${persona.idPersona}" style="color: blue"><i
+								class="nav-icon far fa-edit"></i></a></td> 
+						<td><a th:href="@{/eliminarpersona/} + ${persona.idPersona}" 
+								onclick="return confirm('Esta seguro de eliminar el Cliente?')" style="color:red"><i
+								class="fa fa-ban"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

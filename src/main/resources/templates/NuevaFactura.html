@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="/plantilla/plantillaPrincipal">
+<head>
+<meta charset="utf-8">
+<title>Nueva Factura</title>
+</head>
+<body>
+	<div layout:fragment="contenidoPaginas">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Nueva Factura</h1>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="./">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Nueva
+					Factura</li>
+			</ol>
+		</div>
+		<form id="formulario" th:object="${nuevaFactura}" method="post">
+			<div class="form-group">
+				<label for="txtCodigo">Cliente:</label>
+				<select class="form-control" id="idPersona"
+					th:field="*{fkPersona}">
+					<option selected value="">Seleccionar Cliente</option>
+					<th:block th:each="cliente:${listaCliente}">
+						<option th:value="${cliente.idPersona}"
+							th:text="${cliente.apellidoPersona}+' '+${cliente.nombrePersona}"></option>
+					</th:block>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="txtCodigo">Empleado:</label>
+				<select
+					id="idEmpleado" class="form-control" th:field="*{fkEmpleado}">
+					<option selected value="">Seleccionar Empleado</option>
+					<th:block th:each="empleado:${listaEmpleado}">
+						<option th:value="${empleado.idEmpleado}"
+							th:text="${empleado.apellidoEmpleado}+' '+${empleado.nombreEmpleado}"></option>
+					</th:block>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="txtCodigo">Observacion:</label> <input type="text"
+					class="form-control" id="txtObservacion" th:field="*{observacion}"
+					placeholder="Observacion">
+			</div>
+			<button type="button" id="guardar" class="btn btn-primary">Guardar</button>
+			<div class="form-group" th:object="${nuevoDetalle}">
+				</br> <label for="txtCodigo">Producto:</label> 
+				<select
+					class="form-control" th:field="*{fkDetalleInventarioProducto}" id="producto">
+					<option selected value="0">Seleccionar Producto</option>
+					<th:block th:each="producto:${listaProducto}">
+						<option th:value="${producto.idProducto}"
+							th:text="${producto.nombreProducto}"></option>
+					</th:block>
+				</select> <label for="txtCodigo">Cantidad:</label> <input type="text"
+					class="form-control" id="cantidad" th:field="*{cantidad}"
+					placeholder="Cantidad"> <br>
+				<button type="button" class="btn btn-primary" id="agregar">Agregar</button>
+				<div class="form-group" id="contenido">
+				<br>
+				</div>
+				<div class="form-group" id="productos">
+				<table class="table table-dark" id="lista">
+				<tr>
+					<td>Codigo Producto</td>
+				<td>Producto</td>
+				<td>Cantidad</td>
+				<td>Acciones</td>
+				</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

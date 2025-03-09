@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="/plantilla/plantillaPrincipal">
+<head>
+<meta charset="utf-8">
+<span th:switch="${idProducto == null}">
+	<title th:case="true">Editar Producto</title>
+	<title th:case="false">Nuevo Producto</title>
+  </span>
+</head>
+<body>
+	<div layout:fragment="contenidoPaginas">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<span th:switch="${idProducto == null}">
+				<h1 th:case="false" class="h3 mb-0 text-gray-800">Editar Producto</h1>
+				<h1 th:case="true" class="h3 mb-0 text-gray-800">Nuevo Producto</h1>
+			</span>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="./">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Nuevo
+					Producto</li>
+			</ol>
+		</div>
+		<form th:action="@{/guardarproducto}" th:object="${nuevoProducto}"
+			method="post">
+			<div class="form-group">
+				<label for="txtCodigo">Categoria:</label> 
+				<select class="form-control"
+					th:field="*{fkCategoria.idCategoria}">
+					<option value="0">Seleccionar Categoria</option>
+					<th:block th:each="cate:${listaCategorias}">
+						<option th:value="${cate.idCategoria}"
+							th:text="${cate.nombre}"></option>
+					</th:block>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="txtCodigo">Identificador Comercial:</label> <input
+					type="text" class="form-control" id="txtCodigo"
+					th:field="*{identificadorComercial}"
+					placeholder="Identificador Comercial">
+			</div>
+
+			<div class="form-group">
+				<label for="txtNombre">Nombre:</label> <input type="text"
+					class="form-control" id="txtNombre" th:field="*{nombreProducto}"
+					placeholder="Nombre del Producto">
+			</div>
+
+			<div class="form-group">
+				<label for="txtDescripcion">Descripcion:</label> <input type="text"
+					class="form-control" id="txtDescripcion"
+					th:field="*{descripcionProducto}"
+					placeholder="Descripcion Producto">
+			</div>
+
+			<div class="form-group">
+				<label for="txtPrecio">Precio:</label> <input type="text"
+					class="form-control" id="txtPrecio" th:field="*{precio}"
+					placeholder="Precio Producto">
+			</div>
+
+			<div class="form-group">
+				<label for="txtStock">Stock:</label> <input type="text"
+					class="form-control" id="txtStock" th:field="*{stock}"
+					placeholder="Stock Producto">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Guardar</button>
+			<input type="hidden" th:field="*{idProducto}">
+		</form>
+	</div>
+</body>
+</html>

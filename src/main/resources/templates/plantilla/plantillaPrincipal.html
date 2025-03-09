@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link th:href="@{/themes/img/logo/logo.png}" rel="icon">
+<title>Despensa</title>
+<link th:href="@{/themes/vendor/fontawesome-free/css/all.min.css}"
+	rel="stylesheet" type="text/css">
+<link th:href="@{/themes/vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" type="text/css">
+<link th:href="@{/themes/css/ruang-admin.min.css}" rel="stylesheet">
+</head>
+
+<body id="page-top">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul class="navbar-nav sidebar sidebar-light accordion"
+			id="accordionSidebar">
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="index.html">
+				<div class="sidebar-brand-icon">
+					<img th:src="@{/themes/img/logo/logo2.png}">
+				</div>
+				<div class="sidebar-brand-text mx-3">Despensa</div>
+			</a>
+			<hr class="sidebar-divider my-0">
+			<li class="nav-item"><a class="nav-link" href="index.html">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
+			</a></li>
+			<hr class="sidebar-divider">
+			<div class="sidebar-heading">Seleccione Item</div>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseBootstrap23"
+				aria-expanded="false" aria-controls="collapseBootstrap23"> <i
+					class="far fa-fw fa-user"></i> <span>Empleados</span>
+			</a>
+				<div id="collapseBootstrap23" class="collapse"
+					aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Empleados</h6>
+						<a class="collapse-item" th:href="@{/nuevoempleado}">Insertar</a>
+						<a class="collapse-item" th:href="@{/empleado}">Consultar</a>
+					</div>
+				</div></li>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseBootstrap"
+				aria-expanded="false" aria-controls="collapseBootstrap"> <i
+					class="fas fa-fw fa-user"></i> <span>Clientes</span>
+			</a>
+				<div id="collapseBootstrap" class="collapse"
+					aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Clientes</h6>
+						<a class="collapse-item" th:href="@{/nuevapersona}">Insertar</a> <a
+							class="collapse-item" th:href="@{/persona}">Consultar</a>
+					</div>
+				</div></li>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseForm"
+				aria-expanded="false" aria-controls="collapseForm"> <i
+					class="far fa-fw fa-window-maximize"></i> <span>Categoria</span>
+			</a>
+				<div id="collapseForm" class="collapse"
+					aria-labelledby="headingForm" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Categoria</h6>
+						<a class="collapse-item" th:href="@{/nuevacategoria}">Insertar</a>
+						<a class="collapse-item" th:href="@{/categoria}">Consultar</a>
+					</div>
+				</div></li>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseProductos"
+				aria-expanded="false" aria-controls="collapseProductos"> <i
+					class="fas fa-fw fa-gift"></i> <span>Productos</span>
+			</a>
+				<div id="collapseProductos" class="collapse"
+					aria-labelledby="headingForm" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Productos</h6>
+						<a class="collapse-item" th:href="@{/nuevoproducto}">Insertar</a>
+						<a class="collapse-item" th:href="@{/producto}">Consultar</a>
+					</div>
+				</div></li>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapsePage"
+				aria-expanded="false" aria-controls="collapsePage"> <i
+					class="fab fa-fw fa-wpforms"></i> <span>Factura</span>
+			</a>
+				<div id="collapsePage" class="collapse"
+					aria-labelledby="headingPage" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Factura</h6>
+						<a class="collapse-item" th:href="@{/nuevafactura}">Ingresar</a> <a
+							class="collapse-item" th:href="@{/factura}">Consultar</a>
+					</div>
+				</div></li>
+			<hr class="sidebar-divider">
+			<div class="version" id="version-ruangadmin"></div>
+		</ul>
+		<!-- Sidebar -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div id="content">
+				<!-- TopBar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+					<button id="sidebarToggleTop"
+						class="btn btn-link rounded-circle mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="searchDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
+						</a>
+							<div
+								class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+								aria-labelledby="searchDropdown">
+								<form class="navbar-search">
+									<div class="input-group">
+										<input type="text"
+											class="form-control bg-light border-1 small"
+											placeholder="What do you want to look for?"
+											aria-label="Search" aria-describedby="basic-addon2"
+											style="border-color: #3f51b5;">
+										<div class="input-group-append">
+											<button class="btn btn-primary" type="button">
+												<i class="fas fa-search fa-sm"></i>
+											</button>
+										</div>
+									</div>
+								</form>
+							</div></li>
+						<div class="topbar-divider d-none d-sm-block"></div>
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <img
+								class="img-profile rounded-circle"
+								th:src="@{/themes/img/boy.png}" style="max-width: 60px"> <span
+								class="ml-2 d-none d-lg-inline text-white small">Michael
+									Pesantez</span>
+						</a></li>
+					</ul>
+				</nav>
+				<!-- Topbar -->
+				<!-- Container Fluid-->
+				<div class="container-fluid" id="container-wrapper">
+					<div layout:fragment="contenidoPaginas"></div>
+					<!---Container Fluid-->
+				</div>
+				<!-- Footer -->
+				<footer class="sticky-footer bg-white">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>copyright &copy; <script>
+								document.write(new Date().getFullYear());
+							</script> - developed by <b><a href="https://indrijunanda.gitlab.io/"
+									target="_blank">indrijunanda</a></b>
+							</span>
+						</div>
+					</div>
+				</footer>
+				<!-- Footer -->
+			</div>
+		</div>
+
+		<!-- Scroll to top -->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i>
+		</a>
+
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+			crossorigin="anonymous"></script>
+		<script th:src="@{/themes/vendor/jquery/jquery.min.js}"></script>
+		<script
+			th:src="@{/themes/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/themes/vendor/jquery-easing/jquery.easing.min.js}"></script>
+		<script th:src="@{/themes/vendor/jquery/app.js}"></script>
+		<script th:src="@{/themes/js/ruang-admin.min.js}"></script>
+</body>
+
+</html>

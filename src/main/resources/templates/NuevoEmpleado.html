@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="/plantilla/plantillaPrincipal">
+<head>
+<meta charset="utf-8">
+<title>Nuevo Empleado</title>
+</head>
+<body>
+	<div layout:fragment="contenidoPaginas">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Nuevo Empleado</h1>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="./">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Nuevo Empleado</li>
+			</ol>
+		</div>
+		<form th:action="@{/guardarempleado}" th:object="${nuevoEmpleado}"
+			method="post">
+			<div class="form-group">
+				<label for="txtCedula">Cedula</label> <input type="text"
+					class="form-control" id="txtCedula" th:field="*{cedula}"
+					placeholder="Ingrese el numero de cedula">
+			</div>
+			<div class="form-group">
+				<label for="txtNombre">Nombre</label> <input type="text"
+					class="form-control" id="txtNombre" th:field="*{nombreEmpleado}"
+					placeholder="Ingrese los nombres">
+			</div>
+			<div class="form-group">
+				<label for="txtApellido">Apellido</label> <input type="text"
+					class="form-control" id="txtApellido" th:field="*{apellidoEmpleado}"
+					placeholder="Ingrese los apellidos">
+			</div>
+			<div class="form-group">
+				<label for="txtTelefono">Telefono</label> <input type="text"
+					class="form-control" id="txtTelefono" th:field="*{telefonoEmpleado}"
+					placeholder="Ingrese el telefono">
+			</div>
+			<div class="form-group">
+				<label for="txtEmail">Email</label> <input type="text"
+					class="form-control" id="txtEmail" th:field="*{emailEmpleado}"
+					placeholder="Ingrese el correo">
+			</div>
+			<div class="form-group">
+				<label for="txtDireccion">Direccion</label> <input type="text"
+					class="form-control" id="txtDireccion" th:field="*{direccionEmpleado}"
+					placeholder="Ingrese el correo">
+			</div>
+			<button type="submit" class="btn btn-primary">Guardar</button>
+			<input type="hidden" th:field="*{idEmpleado}">
+		</form>
+	</div>
+</body>
+</html>

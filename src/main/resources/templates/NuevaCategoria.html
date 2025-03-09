@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="/plantilla/plantillaPrincipal">
+<head>
+<meta charset="utf-8">
+<title>Nueva Categoria</title>
+</head>
+<body>
+	<div layout:fragment="contenidoPaginas">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Nueva Categoria</h1>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="./">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Nueva
+					Categoria</li>
+			</ol>
+		</div>
+			<form th:action="@{/guardarcategoria}" th:object="${nueva}"
+			method="post">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Nombre</label> <input
+						type="text" class="form-control" id="txtNombreCategoria"
+						th:field="*{nombre}" placeholder="Ingrese un nombre">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Descripcion</label> <input
+						type="text" class="form-control" id="txtDescripcionCategoria"
+						th:field="*{descripcion}" placeholder="Ingrese una descripcion">
+				</div>
+				<button type="submit" class="btn btn-primary">Guardar</button>
+				<input type="hidden" th:field="*{idCategoria}">
+			</form>
+		</div>
+</body>
+</html>
